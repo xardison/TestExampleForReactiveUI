@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="ReactiveUI.Samples.Routing.Views.SwitcherView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:rx="clr-namespace:ReactiveUI;assembly=ReactiveUI"
+             Background="LightGreen"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="rx:ViewModelViewHost">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            </Style>
+        </Grid.Resources>
+
+        <Button Name="BtNavBlank"
+                Grid.ColumnSpan="3"
+                Click="BtNavBlank_Click"
+                Content="navigate back to BlankViewModel" />
+
+        <CheckBox Name="CbLeft"
+                  Grid.Row="2"
+                  Grid.Column="0"
+                  Click="CbShowHide"
+                  Content="show/hide LeftView"
+                  IsChecked="False" />
+
+        <CheckBox Name="CbRight"
+                  Grid.Row="2"
+                  Grid.Column="2"
+                  Click="CbShowHide"
+                  Content="show/hide RightView"
+                  IsChecked="True" />
+
+        <rx:ViewModelViewHost Name="LeftHost"
+                              Grid.Row="4"
+                              Grid.Column="0"
+                              Visibility="Collapsed" />
+
+        <rx:ViewModelViewHost Name="RightHost"
+                              Grid.Row="4"
+                              Grid.Column="2"
+                              Visibility="Visible" />
+
+    </Grid>
+</UserControl>
